@@ -18,11 +18,8 @@ namespace CardGame
             {
                 for (int j = 0; j < CARDSUIT.Count; j++)
                 {
-                    var TmpCard = new Card()
-                    {
-                        Number = i,
-                        Suit = CARDSUIT[j]
-                    };
+                    //ただしいカードのつくりかた
+                    var TmpCard = new Card(i,CARDSUIT[j]);
                     Cards.Add(TmpCard);
                 }
             }
