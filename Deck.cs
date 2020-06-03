@@ -26,7 +26,11 @@ namespace CardGame
                     Cards.Add(TmpCard);
                 }
             }
+        }
+        public void shuffle()
+        {
             Cards = Cards.OrderBy(i => Guid.NewGuid()).ToList();
+
         }
 
         public Card draw()
