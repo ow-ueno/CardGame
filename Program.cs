@@ -16,18 +16,23 @@ namespace CardGame
 
             //引いたカードのList
             var Draws = new List<Card>();
-            Draws.Add(myDeck.draw());
-            Console.WriteLine("あなたが{2}枚目に引いたカードは{0}の{1}です。",Draws[0].Suit,Draws[0].Number, 1);
-            Draws.Add(myDeck.draw());
-            Console.WriteLine("あなたが{2}枚目に引いたカードは{0}の{1}です。", Draws[1].Suit, Draws[1].Number, 2);
 
-            myDeck.shuffle();
-            Draws.Add(myDeck.draw());
-            Console.WriteLine("あなたが{2}枚目に引いたカードは{0}の{1}です。", Draws[2].Suit, Draws[2].Number, 3);
+            myDeck.Shuffle();
 
+            for (int i = 0; i < 54; i++) { 
+                Draws.Add(myDeck.Draw());
+                DrawMessage(Draws[i].GetSuit(), Draws[i].GetNumberStr(),i + 1);
+            }
+
+            //終了時
             Console.WriteLine("Press Any Key...");
             Console.ReadKey();
 
+        }
+
+        static void DrawMessage(string suit, string number, int cardindex)
+        {
+            Console.WriteLine("あなたが{2}枚目に引いたカードは{0}の{1}です。", suit, number, cardindex);
         }
     }
 }
