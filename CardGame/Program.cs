@@ -86,9 +86,9 @@ namespace CardGame {
             Console.WriteLine("あなたが{2}枚目に引いたカードは{0}の{1}です。", suit, number, index);
         }
         static void DrawMessageLight(Card drawCard, int index) {
-            string suit = drawCard.Suit.GetName();
-            string number = drawCard.GetNumberStr();
-            Console.Write("{0}{1},", suit, number, index);
+            string mark = drawCard.Suit.GetMark();
+            int number = drawCard.Number;
+            Console.Write("[{0}{1:00}],", mark, number);
         }
         static void DrawLine() {
             Console.WriteLine();

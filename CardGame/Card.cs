@@ -99,6 +99,34 @@ namespace CardGame {
             }
             return str;
         }
+        public static string GetMark(this Card.SuitType param) {
+            var str = "";
+            switch (param) {
+                case Card.SuitType.clover:
+                    str = "♧";
+                    break;
+                case Card.SuitType.heart:
+                    str = "♡";
+                    break;
+                case Card.SuitType.diamond:
+                    str = "♢";
+                    break;
+                case Card.SuitType.spade:
+                    str = "♤";
+                    break;
+                case Card.SuitType.black:
+                    str = "黒";
+                    break;
+                case Card.SuitType.red:
+                    str = "赤";
+                    break;
+                default:
+                    str = "!?";
+                    break;
+            }
+            return str;
+        }
+
     }
 
 }
