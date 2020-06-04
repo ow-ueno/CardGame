@@ -12,7 +12,7 @@ namespace CardGame {
         //1.ワンペア
         public bool IsHasOnePair() {
             if (Cards.Count < 2) return false;
-            List<Card> tmpCards = Cards;
+            var tmpCards = Cards;
             return JudgePair(tmpCards) > 0 ? true : false;
         }
 
@@ -21,21 +21,21 @@ namespace CardGame {
         public bool IsHasDoublePair() {
             if (Cards.Count < 4) return false;
             int hasPair = 0;
-            List<Card> tmpCards = Cards;
-            for (int i = 0; i < 2; i++) if(JudgePair(tmpCards) > 0) hasPair++ ;            
-            return hasPair >= 2 ;
+            var tmpCards = Cards;
+            for (int i = 0; i < 2; i++) if (JudgePair(tmpCards) > 0) hasPair++;
+            return hasPair >= 2;
         }
 
         //Listの中身を判定する
         //3.スリーカード
         public bool IsHasTrio() {
             if (Cards.Count < 3) return false;
+            var tmpCards = Cards;
             //先にジョーカーの枚数を数える
             int hasJoker = Cards.FindAll(c => c.Number == JOKERNUM).Count;
             int necesarrySame = 3 - hasJoker;
-            for (int i = 0; i < Cards.Count; i++) {
-                if ((Cards.FindAll(c => c.Number == Cards[i].Number).Count) >= necesarrySame) return true;
-            }
+            for (int i = 0; i < Cards.Count; i++) if ((Cards.FindAll(c => c.Number == Cards[i].Number).Count) >= necesarrySame) return true;
+
             return false;
         }
 

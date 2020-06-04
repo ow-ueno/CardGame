@@ -111,24 +111,24 @@ namespace CardGame {
             }
         }
 
-        static void HasPairMessage(bool isHasPair) {
-            if (isHasPair) {
+        static void HasPairMessage(bool isHas) {
+            if (isHas) {
                 Console.WriteLine("ペアがあります。");
             } else {
                 Console.WriteLine("ペアがありません。");
             }
         }
 
-        static void HasTwoPairMessage(bool isHasPair) {
-            if (isHasPair) {
+        static void HasTwoPairMessage(bool isHas) {
+            if (isHas) {
                 Console.WriteLine("ツーペアです。");
             } else {
                 Console.WriteLine("ツーペアではありません。");
             }
         }
 
-        static void HasThreeCardMessage(bool isHasPair) {
-            if (isHasPair) {
+        static void HasThreeCardMessage(bool isHas) {
+            if (isHas) {
                 Console.WriteLine("スリーカードがあります。");
             } else {
                 Console.WriteLine("スリーカードではありません。");
