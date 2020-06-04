@@ -6,32 +6,51 @@ using System.Text;
 namespace CardGame {
     class Program {
         static void Main(string[] args) {
+
             //おまじない
             Console.OutputEncoding = Encoding.UTF8;
 
-            //Deckをつくる
+            //現在の処理：5枚引いてPairがあるかどうかのゲームを20回繰り返す
+            for (int i = 0; i < 20; i++) {
+                CheckFiveCardHasOnePair();
+            }
+
+            //終了時
+            Console.WriteLine("Press Any Key...");
+            Console.ReadKey();
+
+        }
+
+        static void AllDraw() {
+            //Deckをつくってまぜる
             var myDeck = new Deck();
-
-            //引いたカードのList
-            var Draws = new List<Card>();
-
             myDeck.Shuffle();
 
-            //for (int i = 0; i < 54; i++)
-            //{
-            //    Draws.Add(myDeck.Draw());
-            //    DrawMessage(Draws[i].GetSuit(), Draws[i].GetNumberStr(), i + 1);
-            //}
+            //引いたカードを保管する
+            var Draws = new List<Card>();
 
-            //作成したCountメソッドを使う:while
-            //while (myDeck.Count() > 0) {
-            //    Draws.Add(myDeck.Draw());
-            //    DrawMessage(Draws.Last().GetSuit(), Draws.Last().GetNumberStr(), Draws.Count);
-            //}
+            //while版
+            while (myDeck.Count() > 0) {
+                Draws.Add(myDeck.Draw());
+                DrawMessage(Draws.Last(), Draws.Count);
+            }
+        }
 
-            //forなら
+        static void CompareTwoCard() {
+            //Deckをつくってまぜる
+            var myDeck = new Deck();
+            myDeck.Shuffle();
+
+            //引いたカードを保管する
+            var Draws = new List<Card>();
+
+            for (int i = 0; i < 2; i++) {
+                Draws.Add(myDeck.Draw());
+                DrawMessage(Draws[i], i + 1);
+            }
+
+            //for
             const int DRAWNUM = 2;
-            int deckMax = myDeck.Count();
             for (int i = 0; i < DRAWNUM; i++) {
                 Draws.Add(myDeck.Draw());
                 DrawMessage(Draws.Last(), Draws.Count);
@@ -40,9 +59,24 @@ namespace CardGame {
             //比較
             CompareMessage(Draws[0].Compare(Draws[1]));
 
-            //終了時
-            Console.WriteLine("Press Any Key...");
-            Console.ReadKey();
+        }
+
+        static void CheckFiveCardHasOnePair() {
+
+            //Deckをつくってまぜる
+            var myDeck = new Deck();
+            myDeck.Shuffle();
+            var player = new Player();
+
+            const int DRAWNUM = 5;
+            for (int i = 0; i < DRAWNUM; i++) {
+                player.Cards.Add(myDeck.Draw());
+                DrawMessageLight(player.Cards.Last(), player.Cards.Count);
+            }
+            DrawLine();
+
+            //Pair判定と出力
+            HasPairMessage(player.IsHasPair());
 
         }
 
@@ -51,6 +85,16 @@ namespace CardGame {
             string number = drawCard.GetNumberStr();
             Console.WriteLine("あなたが{2}枚目に引いたカードは{0}の{1}です。", suit, number, index);
         }
+        static void DrawMessageLight(Card drawCard, int index) {
+            string suit = drawCard.Suit.GetName();
+            string number = drawCard.GetNumberStr();
+            Console.Write("{0}{1},", suit, number, index);
+        }
+        static void DrawLine() {
+            Console.WriteLine();
+        }
+
+
 
         static void CompareMessage(int cResult) {
             if (cResult > 0) {
@@ -59,6 +103,14 @@ namespace CardGame {
                 Console.WriteLine("同値です。");
             } else {
                 Console.WriteLine("2枚目のカードが強いです。");
+            }
+        }
+
+        static void HasPairMessage(bool isHasPair) {
+            if (isHasPair) {
+                Console.WriteLine("ペアがあります。");
+            } else {
+                Console.WriteLine("ペアがありません。");
             }
         }
     }

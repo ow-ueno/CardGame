@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26228.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardGame", "CardGame\CardGame.csproj", "{F01327F1-0F7A-4D31-BE0E-59AFA69A05AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardGameTests", "UnitTestProject1\CardGameTests.csproj", "{EF0862C3-5BF0-4124-B395-23E6CB949C19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardGameTests", "CardGameTests\CardGameTests.csproj", "{E63E7B66-77AF-4F67-9CB9-39761B732CBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{F01327F1-0F7A-4D31-BE0E-59AFA69A05AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F01327F1-0F7A-4D31-BE0E-59AFA69A05AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F01327F1-0F7A-4D31-BE0E-59AFA69A05AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF0862C3-5BF0-4124-B395-23E6CB949C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF0862C3-5BF0-4124-B395-23E6CB949C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF0862C3-5BF0-4124-B395-23E6CB949C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF0862C3-5BF0-4124-B395-23E6CB949C19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E63E7B66-77AF-4F67-9CB9-39761B732CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E63E7B66-77AF-4F67-9CB9-39761B732CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E63E7B66-77AF-4F67-9CB9-39761B732CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E63E7B66-77AF-4F67-9CB9-39761B732CBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
