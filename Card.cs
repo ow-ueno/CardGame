@@ -25,7 +25,7 @@ namespace CardGame
                     break;             
             }
             //検索用
-            var suitList = new List<string> { "clover", "diamond", "heart", "spade", "black", "red" };
+            var suitList = new List<string> { "clover", "heart", "diamond", "spade", "black", "red" };
             Power *= 100;
             Power += suitList.IndexOf(this.Suit);
         }
@@ -68,11 +68,11 @@ namespace CardGame
                 case "clover":
                     suitJpn = "クローバー";
                     break;
-                case "diamond":
-                    suitJpn = "ダイヤ";
-                    break;
                 case "heart":
                     suitJpn = "ハート";
+                    break;
+                case "diamond":
+                    suitJpn = "ダイヤ";
                     break;
                 case "spade":
                     suitJpn = "スペード";
