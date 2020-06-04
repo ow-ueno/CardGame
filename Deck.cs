@@ -13,7 +13,7 @@ namespace CardGame
         const int MAXNUM = 13;
         const int SUIT = 4;
         //ジョーカー
-        const int JOKERNUM = 14;
+        const int JOKERNUM = 99;
         //suitの名前
         List<string> CARDSUIT = new List<string> { "spade", "heart", "diamond", "clover", "red", "black" };
 

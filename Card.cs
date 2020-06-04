@@ -8,11 +8,21 @@ namespace CardGame
     {
         public int Number { get; private set; }
         public string Suit { get; private set; }
+        public int Power { get; private set; }
 
         public Card(int number, string suit)
         {
             this.Number = number;
             this.Suit = suit;
+            switch (number)
+            {
+                case 1:
+                    this.Power = 14;
+                    break;
+                default:
+                    this.Power = number;
+                    break;
+            }
         }
 
         public string GetNumberStr()
@@ -33,7 +43,7 @@ namespace CardGame
                 case 13:
                     numberStr = "キング";
                     break;
-                case 14:
+                case 99:
                     numberStr = "ジョーカー";
                     break;
                 default:
@@ -72,6 +82,10 @@ namespace CardGame
             return suitJpn;
         }
 
+        public int Compare(Card c)
+        {
+            return this.Power.CompareTo(c.Power);
+        }
 
     }
 }
