@@ -3,11 +3,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CardGame;
 using System.Collections.Generic;
 
-namespace CardGameTests
-{
+namespace CardGameTests {
     [TestClass]
-    public class CardGameTest
-    {
+    public class CardGameTest {
         [TestMethod]
         public void CardCompareTest() {
             //比較
@@ -57,13 +55,72 @@ namespace CardGameTests
 
         }
 
+        //PlayerHandに格納されたOnePairを適切に検出する
         [TestMethod]
-        public void PlayerHandOnePairTest() {
-            //PlayerHandに格納されたOnePairを適切に検出する
+        public void PlayerHandOnePairTest1() {
 
             var p = new Player();
-            var list1 = new List<int>{ 1, 13, 12, 11, 10 };
-            foreach(int i in list1){
+            var list1 = new List<int> { 1, 13, 12, 11, 10 };
+            foreach (int i in list1) {
+                var c = new Card(i, Card.SuitType.spade);
+                p.Cards.Add(c);
+            }
+
+            //ワンペアを含まない
+            Assert.IsFalse(p.IsHasPair());
+
+        }
+
+        [TestMethod]
+        public void PlayerHandOnePairTest2() {
+
+            var p = new Player();
+            var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart, Card.SuitType.spade };
+            foreach (Card.SuitType st in list2) {
+                var c = new Card(1, st);
+                p.Cards.Add(c);
+            }
+            var j = new Card(99, Card.SuitType.red);
+            p.Cards.Add(j);
+
+            //ワンペアを含む
+            Assert.IsTrue(p.IsHasPair());
+        }
+
+        [TestMethod]
+        public void PlayerHandOnePairTest3() {
+
+            var p = new Player();
+            var list1 = new List<int> { 1, 1, 5, 6, 7 };
+            foreach (int i in list1) {
+                var c = new Card(i, Card.SuitType.spade);
+                p.Cards.Add(c);
+            }
+            //ワンペアを含む
+            Assert.IsTrue(p.IsHasPair());
+        }
+
+        [TestMethod]
+        public void PlayerHandOnePairTest4() {
+
+            var p = new Player();
+            var list1 = new List<int> { 1, 2, 3, 4, 5 };
+            var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart, Card.SuitType.spade, Card.SuitType.spade };
+            foreach (int i in list1) {
+                var c = new Card(i, list2[i]);
+                p.Cards.Add(c);
+            }
+            //ワンペアを含まない
+            Assert.IsFalse(p.IsHasPair());
+
+        }
+
+        [TestMethod]
+        public void PlayerHandOnePairTest5() {
+
+            var p = new Player();
+            var list1 = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+            foreach (int i in list1) {
                 var c = new Card(i, Card.SuitType.spade);
                 p.Cards.Add(c);
             }
@@ -71,5 +128,7 @@ namespace CardGameTests
             Assert.IsFalse(p.IsHasPair());
 
         }
+
+
     }
 }
