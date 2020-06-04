@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -19,10 +20,26 @@ namespace CardGame
 
             myDeck.Shuffle();
 
-            for (int i = 0; i < 54; i++) { 
+            //for (int i = 0; i < 54; i++)
+            //{
+            //    Draws.Add(myDeck.Draw());
+            //    DrawMessage(Draws[i].GetSuit(), Draws[i].GetNumberStr(), i + 1);
+            //}
+
+            //作成したCountメソッドを使う
+            while (myDeck.Count() > 0) {
                 Draws.Add(myDeck.Draw());
-                DrawMessage(Draws[i].GetSuit(), Draws[i].GetNumberStr(),i + 1);
+                DrawMessage(Draws.Last().GetSuit(), Draws.Last().GetNumberStr(), Draws.Count);
             }
+
+            //forなら
+            //int deckMax = myDeck.Count();
+            //for (int i = 0; i < deckMax; i++)
+            //{
+            //    Draws.Add(myDeck.Draw());
+            //    DrawMessage(Draws.Last().GetSuit(), Draws.Last().GetNumberStr(), Draws.Count);
+            //}
+
 
             //終了時
             Console.WriteLine("Press Any Key...");

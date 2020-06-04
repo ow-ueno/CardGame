@@ -48,5 +48,10 @@ namespace CardGame
             Cards.RemoveAt(0);
             return DrawCard;
         }
+
+        public int Count()
+        {
+            return Cards.Count;
+        }
     }
 }
