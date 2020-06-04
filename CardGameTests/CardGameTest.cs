@@ -169,7 +169,7 @@ namespace CardGameTests {
             var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart, Card.SuitType.spade, Card.SuitType.clover };
             foreach (int i in list1) {
                 var c = new Card(i, list2[0]);
-                list2.Remove(0);
+                list2.RemoveAt(0);
                 p.Cards.Add(c);
             }
             //ツーペアを含む
@@ -215,7 +215,7 @@ namespace CardGameTests {
             var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart, Card.SuitType.spade, Card.SuitType.clover };
             foreach (Card.SuitType st in list2) {
                 var c = new Card(list1[0], st);
-                list1.Remove(0);
+                list1.RemoveAt(0);
                 p.Cards.Add(c);
             }
 
@@ -233,7 +233,7 @@ namespace CardGameTests {
             var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart, Card.SuitType.spade, Card.SuitType.clover };
             foreach (Card.SuitType st in list2) {
                 var c = new Card(list1[0], st);
-                list1.Remove(0);
+                list1.RemoveAt(0);
                 p.Cards.Add(c);
             }
 
@@ -270,7 +270,7 @@ namespace CardGameTests {
             var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart, Card.SuitType.spade, Card.SuitType.clover };
             foreach (Card.SuitType st in list2) {
                 var c = new Card(list1[0], st);
-                list1.Remove(0);
+                list1.RemoveAt(0);
                 p.Cards.Add(c);
             }
 

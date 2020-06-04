@@ -10,10 +10,9 @@ namespace CardGame {
             //おまじない
             Console.OutputEncoding = Encoding.UTF8;
 
-            //現在の処理：5枚引いてPairがあるかどうかのゲームを20回繰り返す
-            for (int i = 0; i < 20; i++) {
-                CheckFiveCardHasOnePair();
-            }
+            //現在の処理：5枚引いてOnePair、TwoPair、ThreeOfAKindが含まれるか
+            //ゲームを20回繰り返す
+            for (int i = 0; i < 100; i++) CheckFiveCard();
 
             //終了時
             Console.WriteLine("Press Any Key...");
@@ -61,7 +60,7 @@ namespace CardGame {
 
         }
 
-        static void CheckFiveCardHasOnePair() {
+        static void CheckFiveCard() {
 
             //Deckをつくってまぜる
             var myDeck = new Deck();
@@ -77,6 +76,12 @@ namespace CardGame {
 
             //Pair判定と出力
             HasPairMessage(player.IsHasOnePair());
+
+            //twoPair判定と出力
+            HasTwoPairMessage(player.IsHasDoublePair());
+
+            //threeOfAKind判定と出力
+            HasThreeCardMessage(player.IsHasTrio());
 
         }
 
@@ -113,5 +118,22 @@ namespace CardGame {
                 Console.WriteLine("ペアがありません。");
             }
         }
+
+        static void HasTwoPairMessage(bool isHasPair) {
+            if (isHasPair) {
+                Console.WriteLine("ツーペアです。");
+            } else {
+                Console.WriteLine("ツーペアではありません。");
+            }
+        }
+
+        static void HasThreeCardMessage(bool isHasPair) {
+            if (isHasPair) {
+                Console.WriteLine("スリーカードがあります。");
+            } else {
+                Console.WriteLine("スリーカードではありません。");
+            }
+        }
+
     }
 }
