@@ -107,7 +107,7 @@ namespace CardGameTests {
             var list1 = new List<int> { 1, 2, 3, 4, 5 };
             var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart, Card.SuitType.spade, Card.SuitType.spade };
             foreach (int i in list1) {
-                var c = new Card(i, list2[i]);
+                var c = new Card(i, list2[i-1]);
                 p.Cards.Add(c);
             }
             //ƒƒ“ƒyƒA‚ğŠÜ‚Ü‚È‚¢
