@@ -1,6 +1,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CardGame;
+using System.Collections.Generic;
 
 namespace CardGameTests
 {
@@ -55,9 +56,19 @@ namespace CardGameTests
             Assert.AreEqual(d.Count(), 53);
 
         }
+
         [TestMethod]
         public void PlayerHandOnePairTest() {
             //PlayerHandに格納されたOnePairを適切に検出する
+
+            var p = new Player();
+            var list1 = new List<int>{ 1, 13, 12, 11, 10 };
+            foreach(int i in list1){
+                var c = new Card(i, Card.SuitType.spade);
+                p.Cards.Add(c);
+            }
+            //ワンペアを含まない
+            Assert.IsFalse(p.IsHasPair());
 
         }
     }
