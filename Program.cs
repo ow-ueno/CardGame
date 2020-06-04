@@ -38,7 +38,7 @@ namespace CardGame
             for (int i = 0; i < DRAWNUM; i++)
             {
                 Draws.Add(myDeck.Draw());
-                DrawMessage(Draws.Last().GetSuit(), Draws.Last().GetNumberStr(), Draws.Count);
+                DrawMessage(Draws.Last(), Draws.Count);
             }
 
             //比較
@@ -50,9 +50,11 @@ namespace CardGame
 
         }
 
-        static void DrawMessage(string suit, string number, int cardindex)
+        static void DrawMessage(Card drawCard, int index)
         {
-            Console.WriteLine("あなたが{2}枚目に引いたカードは{0}の{1}です。", suit, number, cardindex);
+            string suit = drawCard.Suit.GetName();
+            string number = drawCard.GetNumberStr();
+            Console.WriteLine("あなたが{2}枚目に引いたカードは{0}の{1}です。", suit, number, index);
         }
 
         static void CompareMessage(int cResult)
