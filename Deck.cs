@@ -44,8 +44,15 @@ namespace CardGame
 
         public Card Draw()
         {
-            var DrawCard = Cards[0];
-            Cards.RemoveAt(0);
+            //defaultをnullに変更
+            Card DrawCard = null;
+            if (Cards.Count > 0)
+            {
+                //入れた順に取り出すように変更
+                var index = Cards.Count - 1;
+                DrawCard = Cards[index];
+                Cards.RemoveAt(index);
+            }
             return DrawCard;
         }
 
