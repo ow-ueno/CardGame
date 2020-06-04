@@ -76,7 +76,7 @@ namespace CardGame {
             DrawLine();
 
             //Pair判定と出力
-            HasPairMessage(player.IsHasPair());
+            HasPairMessage(player.IsHasOnePair());
 
         }
 
