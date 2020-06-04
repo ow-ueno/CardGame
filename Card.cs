@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CardGame
-{
-    public class Card
-    {
+namespace CardGame {
+    public class Card {
         public int Number { get; private set; }
         public SuitType Suit { get; private set; }
         public int Power { get; private set; }
-        public enum SuitType
-        {
+        public enum SuitType {
             clover = 1,
             heart = 2,
             diamond = 3,
@@ -19,13 +16,11 @@ namespace CardGame
             red = 20,
         }
 
-        public Card(int number, SuitType suit)
-        {
+        public Card(int number, SuitType suit) {
             this.Number = number;
             this.Suit = suit;
             //powerの設定
-            switch (number)
-            {
+            switch (number) {
                 case 1:
                     this.Power = 14;
                     break;
@@ -37,12 +32,10 @@ namespace CardGame
             Power += (int)Suit;
         }
 
-        public string GetNumberStr()
-        {
+        public string GetNumberStr() {
             string numberStr;
 
-            switch (Number)
-            {
+            switch (Number) {
                 case 1:
                     numberStr = "エース";
                     break;
@@ -66,13 +59,11 @@ namespace CardGame
             return numberStr;
         }
 
-        public int Compare(Card c)
-        {
+        public int Compare(Card c) {
             return this.Power.CompareTo(c.Power);
         }
 
-        public bool Equals(Card c)
-        {
+        public bool Equals(Card c) {
             bool isSumNum = this.Number == c.Number ? true : false;
             bool isSumSuit = this.Suit == c.Suit ? true : false;
             return isSumNum && isSumSuit ? true : false;
@@ -80,13 +71,10 @@ namespace CardGame
 
     }
 
-    public static partial class EnumExtend
-    {
-        public static string GetName(this Card.SuitType param)
-        {
+    public static partial class EnumExtend {
+        public static string GetName(this Card.SuitType param) {
             var str = "";
-            switch (param)
-            {
+            switch (param) {
                 case Card.SuitType.clover:
                     str = "クローバー";
                     break;

@@ -3,12 +3,9 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CardGame
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
+namespace CardGame {
+    class Program {
+        static void Main(string[] args) {
             //おまじない
             Console.OutputEncoding = Encoding.UTF8;
 
@@ -35,8 +32,7 @@ namespace CardGame
             //forなら
             const int DRAWNUM = 2;
             int deckMax = myDeck.Count();
-            for (int i = 0; i < DRAWNUM; i++)
-            {
+            for (int i = 0; i < DRAWNUM; i++) {
                 Draws.Add(myDeck.Draw());
                 DrawMessage(Draws.Last(), Draws.Count);
             }
@@ -50,25 +46,18 @@ namespace CardGame
 
         }
 
-        static void DrawMessage(Card drawCard, int index)
-        {
+        static void DrawMessage(Card drawCard, int index) {
             string suit = drawCard.Suit.GetName();
             string number = drawCard.GetNumberStr();
             Console.WriteLine("あなたが{2}枚目に引いたカードは{0}の{1}です。", suit, number, index);
         }
 
-        static void CompareMessage(int cResult)
-        {
-            if (cResult > 0)
-            {
+        static void CompareMessage(int cResult) {
+            if (cResult > 0) {
                 Console.WriteLine("1枚目のカードが強いです。");
-            }
-            else if (cResult == 0)
-            {
+            } else if (cResult == 0) {
                 Console.WriteLine("同値です。");
-            }
-            else
-            {
+            } else {
                 Console.WriteLine("2枚目のカードが強いです。");
             }
         }

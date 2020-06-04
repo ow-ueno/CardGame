@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CardGame
-{
-    public class Deck
-    {
+namespace CardGame {
+    public class Deck {
         List<Card> Cards = new List<Card>();
 
         //数字カード
@@ -17,12 +15,9 @@ namespace CardGame
         //suitの名前
         List<Card.SuitType> CARDSUIT = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.heart, Card.SuitType.diamond, Card.SuitType.spade, Card.SuitType.red, Card.SuitType.black };
 
-        public Deck()
-        {
-            for (int i = 0; i < SUIT; i++)
-            {
-                for (int j = 1; j <= MAXNUM; j++)
-                {
+        public Deck() {
+            for (int i = 0; i < SUIT; i++) {
+                for (int j = 1; j <= MAXNUM; j++) {
                     //ただしいカードのつくりかた
                     //コンストラクタで初期値を設定することで、以後変更できないようにする
                     var TmpCard = new Card(j, CARDSUIT[i]);
@@ -36,18 +31,15 @@ namespace CardGame
             Cards.Add(RedJoker);
         }
 
-        public void Shuffle()
-        {
+        public void Shuffle() {
             Cards = Cards.OrderBy(i => Guid.NewGuid()).ToList();
 
         }
 
-        public Card Draw()
-        {
+        public Card Draw() {
             //defaultをnullに変更
             Card DrawCard = null;
-            if (Cards.Count > 0)
-            {
+            if (Cards.Count > 0) {
                 //入れた順に取り出すように変更
                 var index = Cards.Count - 1;
                 DrawCard = Cards[index];
@@ -56,8 +48,7 @@ namespace CardGame
             return DrawCard;
         }
 
-        public int Count()
-        {
+        public int Count() {
             return Cards.Count;
         }
     }
