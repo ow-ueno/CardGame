@@ -7,10 +7,19 @@ namespace CardGame
     public class Card
     {
         public int Number { get; private set; }
-        public string Suit { get; private set; }
+        public SuitType Suit { get; private set; }
         public int Power { get; private set; }
+        public enum SuitType
+        {
+            clover = 1,
+            heart = 2,
+            diamond = 3,
+            spade = 4,
+            black = 10,
+            red = 20,
+        }
 
-        public Card(int number, string suit)
+        public Card(int number, SuitType suit)
         {
             this.Number = number;
             this.Suit = suit;
@@ -22,12 +31,10 @@ namespace CardGame
                     break;
                 default:
                     this.Power = number;
-                    break;             
+                    break;
             }
-            //検索用
-            var suitList = new List<string> { "clover", "heart", "diamond", "spade", "black", "red" };
             Power *= 100;
-            Power += suitList.IndexOf(this.Suit);
+            Power += (int)Suit;
         }
 
         public string GetNumberStr()
@@ -59,38 +66,44 @@ namespace CardGame
             return numberStr;
         }
 
-        public string GetSuit()
-        {
-            string suitJpn;
-
-            switch (Suit)
-            {
-                case "clover":
-                    suitJpn = "クローバー";
-                    break;
-                case "heart":
-                    suitJpn = "ハート";
-                    break;
-                case "diamond":
-                    suitJpn = "ダイヤ";
-                    break;
-                case "spade":
-                    suitJpn = "スペード";
-                    break;
-                case "red":
-                    suitJpn = "赤";
-                    break;
-                default:
-                    suitJpn = "黒";
-                    break;
-            }
-            return suitJpn;
-        }
-
         public int Compare(Card c)
         {
             return this.Power.CompareTo(c.Power);
         }
 
     }
+
+    public static partial class EnumExtend
+    {
+        public static string GetName(this Card.SuitType param)
+        {
+            var str = "";
+            switch (param)
+            {
+                case Card.SuitType.clover:
+                    str = "クローバー";
+                    break;
+                case Card.SuitType.heart:
+                    str = "ハート";
+                    break;
+                case Card.SuitType.diamond:
+                    str = "ダイヤ";
+                    break;
+                case Card.SuitType.spade:
+                    str = "スペード";
+                    break;
+                case Card.SuitType.black:
+                    str = "黒";
+                    break;
+                case Card.SuitType.red:
+                    str = "赤";
+                    break;
+                default:
+                    str = "エラー";
+                    break;
+            }
+            return str;
+        }
+    }
+
 }

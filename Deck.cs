@@ -15,7 +15,7 @@ namespace CardGame
         //ジョーカー
         const int JOKERNUM = 99;
         //suitの名前
-        List<string> CARDSUIT = new List<string> { "spade", "heart", "diamond", "clover", "red", "black" };
+        List<Card.SuitType> CARDSUIT = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.heart, Card.SuitType.diamond, Card.SuitType.spade, Card.SuitType.red, Card.SuitType.black };
 
         public Deck()
         {
