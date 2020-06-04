@@ -71,6 +71,13 @@ namespace CardGame
             return this.Power.CompareTo(c.Power);
         }
 
+        public bool Equals(Card c)
+        {
+            bool isSumNum = this.Number == c.Number ? true : false;
+            bool isSumSuit = this.Suit == c.Suit ? true : false;
+            return isSumNum && isSumSuit ? true : false;
+        }
+
     }
 
     public static partial class EnumExtend

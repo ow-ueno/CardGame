@@ -30,10 +30,10 @@ namespace CardGame
                 }
             }
             //ジョーカーを2枚追加
-            var RedJoker = new Card(JOKERNUM, CARDSUIT[4]);
-            Cards.Add(RedJoker);
             var BlackJoker = new Card(JOKERNUM, CARDSUIT[5]);
             Cards.Add(BlackJoker);
+            var RedJoker = new Card(JOKERNUM, CARDSUIT[4]);
+            Cards.Add(RedJoker);
         }
 
         public void Shuffle()
