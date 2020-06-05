@@ -11,7 +11,7 @@ namespace CardGame {
             Console.OutputEncoding = Encoding.UTF8;
 
             //現在の処理：5枚引いてOnePair、TwoPair、ThreeOfAKindが含まれるか
-            //ゲームを20回繰り返す
+            //ゲームを100回繰り返す
             for (int i = 0; i < 100; i++) CheckFiveCard();
 
             //終了時
@@ -111,27 +111,27 @@ namespace CardGame {
             }
         }
 
-        static void HasPairMessage(bool isHas) {
-            if (isHas) {
-                Console.WriteLine("ペアがあります。");
+        static void HasPairMessage(int isHas) {
+            if (isHas > 0) {
+                Console.WriteLine("○HasPair    : True({0})",isHas);
             } else {
-                Console.WriteLine("ペアがありません。");
+                Console.WriteLine("×HasPair    : False");
             }
         }
 
-        static void HasTwoPairMessage(bool isHas) {
-            if (isHas) {
-                Console.WriteLine("ツーペアです。");
+        static void HasTwoPairMessage(List<int> isHas) {
+            if (isHas != null) {
+                Console.WriteLine("○HasTwoPair : True({0},{1})", isHas[0],isHas[1]);
             } else {
-                Console.WriteLine("ツーペアではありません。");
+                Console.WriteLine("×HasTwoPair : False");
             }
         }
 
-        static void HasThreeCardMessage(bool isHas) {
-            if (isHas) {
-                Console.WriteLine("スリーカードがあります。");
+        static void HasThreeCardMessage(int isHas) {
+            if (isHas > 0) {
+                Console.WriteLine("○HasPair    : True({0})", isHas);
             } else {
-                Console.WriteLine("スリーカードではありません。");
+                Console.WriteLine("×HasTrio    : False");
             }
         }
 

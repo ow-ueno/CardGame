@@ -10,35 +10,41 @@ namespace CardGame {
 
         //Listの中身を判定する
         //1.ワンペア
-        public bool IsHasOnePair() {
-            if (Cards.Count < 2) return false;
+        public int IsHasOnePair() {
+            if (Cards.Count < 2) return 0;
             var tmpCards = new List<Card>(Cards);
-            return JudgePair(tmpCards) > 0 ? true : false;
+            return JudgePair(tmpCards) > 0 ? JudgePair(tmpCards) : 0;
         }
 
         //Listの中身を判定する
         //2.ツーペア
-        public bool IsHasDoublePair() {
-            if (Cards.Count < 4) return false;
+        public List<int> IsHasDoublePair() {
+            if (Cards.Count < 4) return null;
             int hasPair = 0;
             var tmpCards = new List<Card>(Cards);
-            for (int i = 0; i < 2; i++) if (JudgePair(tmpCards) > 0) hasPair++;
-            return hasPair >= 2;
+            var pairNum = new List<int>();
+            for (int i = 0; i < 2; i++) {
+                if (JudgePair(tmpCards) > 0) pairNum.Add(JudgePair(tmpCards));
+            }
+            return hasPair >= 2 ? pairNum : null;
         }
 
         //Listの中身を判定する
         //3.スリーカード
-        public bool IsHasTrio() {
-            if (Cards.Count < 3) return false;
+        public int IsHasTrio() {
+            if (Cards.Count < 3) return 0;
             var tmpCards = new List<Card>(Cards);
             //先にジョーカーの枚数を数える
-            int hasJoker = Cards.FindAll(c => c.Number == JOKERNUM).Count;
+            int hasJoker = tmpCards.FindAll(c => c.Number == JOKERNUM).Count;
             int necesarrySame = 3 - hasJoker;
-            for (int i = 0; i < Cards.Count; i++) if ((Cards.FindAll(c => c.Number == Cards[i].Number).Count) >= necesarrySame) return true;
-
-            return false;
+            for (int i = 0; i < tmpCards.Count; i++) {
+                if ((tmpCards.FindAll(c => c.Number == tmpCards[i].Number).Count) >= necesarrySame) return tmpCards[i].Number;
+            }
+            return 0;
         }
 
+        //ペアの判定
+        //ワンペア、ツーペア、フルハウスで使用
         public int JudgePair(List<Card> judge) {
             for (int i = 0; i < judge.Count; i++) {
                 //jokerは無条件
@@ -57,8 +63,16 @@ namespace CardGame {
                 }
             }
             return 0;
-
         }
+
+        //スリーカードの判定
+        //スリーカード、フルハウスで使用
+        public int JudgeTrio(List<Card> judge) {
+            //未実装
+            //スリーカードの実装から移す
+            return 0;
+        }
+
 
     }
 }

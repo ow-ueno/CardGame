@@ -67,7 +67,7 @@ namespace CardGameTests {
             }
 
             //ワンペアを含まない
-            Assert.IsFalse(p.IsHasOnePair());
+            Assert.AreEqual(p.IsHasOnePair(), 0);
 
         }
 
@@ -83,8 +83,8 @@ namespace CardGameTests {
             var j = new Card(99, Card.SuitType.red);
             p.Cards.Add(j);
 
-            //ワンペアを含む
-            Assert.IsTrue(p.IsHasOnePair());
+            //1のワンペアを含む
+            Assert.AreEqual(p.IsHasOnePair(), 1);
         }
 
         [TestMethod]
@@ -96,8 +96,8 @@ namespace CardGameTests {
                 var c = new Card(i, Card.SuitType.spade);
                 p.Cards.Add(c);
             }
-            //ワンペアを含む
-            Assert.IsTrue(p.IsHasOnePair());
+            //1のワンペアを含む
+            Assert.AreEqual(p.IsHasOnePair(), 1);
         }
 
         [TestMethod]
@@ -111,7 +111,7 @@ namespace CardGameTests {
                 p.Cards.Add(c);
             }
             //ワンペアを含まない
-            Assert.IsFalse(p.IsHasOnePair());
+            Assert.AreEqual(p.IsHasOnePair(), 0);
 
         }
 
@@ -124,8 +124,9 @@ namespace CardGameTests {
                 var c = new Card(i, Card.SuitType.spade);
                 p.Cards.Add(c);
             }
+
             //ワンペアを含まない
-            Assert.IsFalse(p.IsHasOnePair());
+            Assert.AreEqual(p.IsHasOnePair(), 0);
 
         }
 
@@ -141,8 +142,9 @@ namespace CardGameTests {
                 p.Cards.Add(c);
             }
 
-            //ツーペアを含まない
-            Assert.IsFalse(p.IsHasDoublePair());
+            //null
+            var expacted = new List<int>();
+            Assert.AreEqual(p.IsHasDoublePair(), expacted);
 
         }
 
@@ -156,8 +158,9 @@ namespace CardGameTests {
                 var c = new Card(i, Card.SuitType.spade);
                 p.Cards.Add(c);
             }
-            //ツーペアを含む
-            Assert.IsTrue(p.IsHasDoublePair());
+            //1と2のツーペア
+            var expacted = new List<int> { 1, 2 };
+            Assert.AreEqual(p.IsHasDoublePair(), expacted);
         }
 
         //フルハウス
@@ -172,8 +175,9 @@ namespace CardGameTests {
                 list2.RemoveAt(0);
                 p.Cards.Add(c);
             }
-            //ツーペアを含む
-            Assert.IsTrue(p.IsHasDoublePair());
+            //1と2のツーペア
+            var expacted = new List<int> { 1, 2 };
+            Assert.AreEqual(p.IsHasDoublePair(), expacted);
         }
 
         //ワンペア
@@ -186,8 +190,11 @@ namespace CardGameTests {
                 var c = new Card(i, Card.SuitType.spade);
                 p.Cards.Add(c);
             }
-            //ツーペアを含まない
-            Assert.IsFalse(p.IsHasDoublePair());
+
+            //null
+            var expacted = new List<int>();
+            Assert.AreEqual(p.IsHasDoublePair(), expacted);
+
         }
 
         //ストレート
@@ -201,8 +208,10 @@ namespace CardGameTests {
                 var c = new Card(i, list2[i - 1]);
                 p.Cards.Add(c);
             }
-            //ツーペアを含まない
-            Assert.IsFalse(p.IsHasDoublePair());
+
+            //null
+            var expacted = new List<int>();
+            Assert.AreEqual(p.IsHasDoublePair(), expacted);
 
         }
 
@@ -219,8 +228,9 @@ namespace CardGameTests {
                 p.Cards.Add(c);
             }
 
-            //ツーペアを含まない
-            Assert.IsFalse(p.IsHasDoublePair());
+            //null
+            var expacted = new List<int>();
+            Assert.AreEqual(p.IsHasDoublePair(), expacted);
 
         }
 
@@ -237,8 +247,9 @@ namespace CardGameTests {
                 p.Cards.Add(c);
             }
 
-            //ツーペアを含まない
-            Assert.IsFalse(p.IsHasDoublePair());
+            //null
+            var expacted = new List<int>();
+            Assert.AreEqual(p.IsHasDoublePair(), expacted);
 
         }
 
@@ -255,9 +266,10 @@ namespace CardGameTests {
             }
             var j = new Card(99, Card.SuitType.red);
             p.Cards.Add(j);
-
-            //ツーペアを含む
-            Assert.IsTrue(p.IsHasDoublePair());
+            
+            //99と1のツーペア
+            var expacted = new List<int> { 99, 1 };
+            Assert.AreEqual(p.IsHasDoublePair(), expacted);
 
         }
 
@@ -274,8 +286,9 @@ namespace CardGameTests {
                 p.Cards.Add(c);
             }
 
-            //ツーペアを含む
-            Assert.IsTrue(p.IsHasDoublePair());
+            //1と1のツーペア
+            var expacted = new List<int> { 1, 1 };
+            Assert.AreEqual(p.IsHasDoublePair(), expacted);
 
         }
     }
