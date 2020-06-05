@@ -129,7 +129,7 @@ namespace CardGame {
 
         static void HasThreeCardMessage(int isHas) {
             if (isHas > 0) {
-                Console.WriteLine("○HasPair    : True({0})", isHas);
+                Console.WriteLine("○HasTrio    : True({0})", isHas);
             } else {
                 Console.WriteLine("×HasTrio    : False");
             }
