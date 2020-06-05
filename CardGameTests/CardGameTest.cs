@@ -143,8 +143,7 @@ namespace CardGameTests {
             }
 
             //null
-            var expacted = new List<int>();
-            Assert.AreEqual(p.IsHasDoublePair(), expacted);
+            Assert.IsNull(p.IsHasDoublePair());
 
         }
 
@@ -159,8 +158,9 @@ namespace CardGameTests {
                 p.Cards.Add(c);
             }
             //1と2のツーペア
-            var expacted = new List<int> { 1, 2 };
-            Assert.AreEqual(p.IsHasDoublePair(), expacted);
+            var expected = new List<int> { 1, 2 };
+            var actual = p.IsHasDoublePair();
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         //フルハウス
@@ -176,8 +176,9 @@ namespace CardGameTests {
                 p.Cards.Add(c);
             }
             //1と2のツーペア
-            var expacted = new List<int> { 1, 2 };
-            Assert.AreEqual(p.IsHasDoublePair(), expacted);
+            var expected = new List<int> { 1, 2 };
+            var actual = p.IsHasDoublePair();
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         //ワンペア
@@ -192,8 +193,7 @@ namespace CardGameTests {
             }
 
             //null
-            var expacted = new List<int>();
-            Assert.AreEqual(p.IsHasDoublePair(), expacted);
+            Assert.IsNull(p.IsHasDoublePair());
 
         }
 
@@ -210,8 +210,7 @@ namespace CardGameTests {
             }
 
             //null
-            var expacted = new List<int>();
-            Assert.AreEqual(p.IsHasDoublePair(), expacted);
+            Assert.IsNull(p.IsHasDoublePair());
 
         }
 
@@ -229,8 +228,7 @@ namespace CardGameTests {
             }
 
             //null
-            var expacted = new List<int>();
-            Assert.AreEqual(p.IsHasDoublePair(), expacted);
+            Assert.IsNull(p.IsHasDoublePair());
 
         }
 
@@ -248,8 +246,7 @@ namespace CardGameTests {
             }
 
             //null
-            var expacted = new List<int>();
-            Assert.AreEqual(p.IsHasDoublePair(), expacted);
+            Assert.IsNull(p.IsHasDoublePair());
 
         }
 
@@ -259,17 +256,18 @@ namespace CardGameTests {
 
             var p = new Player();
             var list1 = new List<int> { 1, 1, 7, 9 };
-            var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart};
+            var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart };
             foreach (Card.SuitType st in list2) {
                 var c = new Card(1, st);
                 p.Cards.Add(c);
             }
             var j = new Card(99, Card.SuitType.red);
             p.Cards.Add(j);
-            
+
             //99と1のツーペア
-            var expacted = new List<int> { 99, 1 };
-            Assert.AreEqual(p.IsHasDoublePair(), expacted);
+            var expected = new List<int> { 1 , 99 };
+            var actual = p.IsHasDoublePair();
+            CollectionAssert.AreEqual(expected, actual);
 
         }
 
@@ -287,8 +285,17 @@ namespace CardGameTests {
             }
 
             //1と1のツーペア
-            var expacted = new List<int> { 1, 1 };
-            Assert.AreEqual(p.IsHasDoublePair(), expacted);
+            var expected = new List<int> { 1, 1 };
+            var actual = p.IsHasDoublePair();
+            CollectionAssert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod]
+        public void PlayerHandThreeCardTest1() {
+            var p = new Player();
+            //ここを作る
+            Assert.AreEqual(p.IsHasTrio(), 1);
 
         }
     }

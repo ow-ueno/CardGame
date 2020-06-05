@@ -13,23 +13,22 @@ namespace CardGame {
         public int IsHasOnePair() {
             if (Cards.Count < 2) return 0;
             var tmpCards = new List<Card>(Cards);
-            return JudgePair(tmpCards) > 0 ? JudgePair(tmpCards) : 0;
+            var pairNum = JudgePair(tmpCards);
+            return pairNum > 0 ? pairNum : 0;
         }
 
-        //Listの中身を判定する
         //2.ツーペア
         public List<int> IsHasDoublePair() {
             if (Cards.Count < 4) return null;
-            int hasPair = 0;
             var tmpCards = new List<Card>(Cards);
-            var pairNum = new List<int>();
+            var pairNums = new List<int>();
             for (int i = 0; i < 2; i++) {
-                if (JudgePair(tmpCards) > 0) pairNum.Add(JudgePair(tmpCards));
+                var pairNum = JudgePair(tmpCards);
+                if (pairNum > 0) pairNums.Add(pairNum);
             }
-            return hasPair >= 2 ? pairNum : null;
+            return pairNums.Count >= 2 ? pairNums : null;
         }
 
-        //Listの中身を判定する
         //3.スリーカード
         public int IsHasTrio() {
             if (Cards.Count < 3) return 0;
@@ -40,6 +39,51 @@ namespace CardGame {
             for (int i = 0; i < tmpCards.Count; i++) {
                 if ((tmpCards.FindAll(c => c.Number == tmpCards[i].Number).Count) >= necesarrySame) return tmpCards[i].Number;
             }
+            return 0;
+        }
+
+        //4.ストレート
+        public int IsHasStraight() {
+            //未実装
+            return 0;
+        }
+
+        //5.フラッシュ
+        public int IsHasFlush() {
+            //未実装
+            return 0;
+        }
+
+        //6.フルハウス
+        //厳密にはint,intを返すべきな気もするが
+        public List<int> IsHasFullHouse() {
+            //未実装
+            //スリーカード+ワンペア
+            return null;
+        }
+
+        //7.フォーカード
+        public int IsHasQuartet() {
+            //未実装
+            return 0;
+        }
+
+        //8.ストレートフラッシュ
+        public int IsHasStraightFlush() {
+            //未実装
+            //ストレート+フラッシュ
+            return 0;
+        }
+
+        //9.ファイブカード
+        public int IsHasQuintet() {
+            //未実装
+            return 0;
+        }
+
+        //10.ロイヤルフラッシュ
+        public int IsHasRoyalFlush() {
+            //未実装
             return 0;
         }
 
@@ -72,6 +116,39 @@ namespace CardGame {
             //スリーカードの実装から移す
             return 0;
         }
+
+        //ストレートの判定
+        //ストレート、ストレートフラッシュ、ロイヤルフラッシュで使用
+        //「5枚の階段の成立」
+        public int JudgeStraight(List<Card> judge) {
+            //未実装
+            //スリーカードの実装から移す
+            return 0;
+        }
+
+        //フラッシュの判定
+        //フラッシュ、ストレートフラッシュ、ロイヤルフラッシュで使用
+        //「ジョーカー以外全てのSuitが同じ」
+        public Card.SuitType JudgeFlush(List<Card> judge) {
+            //未実装
+            //スリーカードの実装から移す
+            return 0;
+        }
+
+
+
+        //フォーカードの判定、フォーカードで使用
+        public int JudgeQuartet(List<Card> judge) {
+            //未実装
+            return 0;
+        }
+
+        //ファイブカードの判定、ファイブカードで使用
+        public int JudgeQuintet(List<Card> judge) {
+            //未実装
+            return 0;
+        }
+
 
 
     }
