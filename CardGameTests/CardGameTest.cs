@@ -265,7 +265,7 @@ namespace CardGameTests {
             p.Cards.Add(j);
 
             //99と1のツーペア
-            var expected = new List<int> { 1 , 99 };
+            var expected = new List<int> { 1, 99 };
             var actual = p.IsHasDoublePair();
             CollectionAssert.AreEqual(expected, actual);
 
@@ -288,15 +288,98 @@ namespace CardGameTests {
             var expected = new List<int> { 1, 1 };
             var actual = p.IsHasDoublePair();
             CollectionAssert.AreEqual(expected, actual);
-
         }
 
         [TestMethod]
         public void PlayerHandThreeCardTest1() {
             var p = new Player();
-            //ここを作る
+            var list1 = new List<int> { 1, 1, 1, 7, 9 };
+            var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart, Card.SuitType.spade, Card.SuitType.clover };
+            foreach (Card.SuitType st in list2) {
+                var c = new Card(list1[0], st);
+                list1.RemoveAt(0);
+                p.Cards.Add(c);
+            }
             Assert.AreEqual(p.IsHasTrio(), 1);
-
         }
+
+        [TestMethod]
+        public void PlayerHandStraightTest1() {
+            var p = new Player();
+            var list1 = new List<int> { 3, 4, 5, 6, 7 };
+            var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart, Card.SuitType.spade, Card.SuitType.clover };
+            foreach (Card.SuitType st in list2) {
+                var c = new Card(list1[0], st);
+                list1.RemoveAt(0);
+                p.Cards.Add(c);
+            }
+            Assert.AreEqual(p.IsHasStraight(), 3);
+        }
+
+        [TestMethod]
+        public void PlayerHandFlushTest1() {
+            var p = new Player();
+            var list1 = new List<int> { 1, 3, 5, 7, 9 };
+            var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.clover, Card.SuitType.clover, Card.SuitType.clover, Card.SuitType.clover };
+            foreach (Card.SuitType st in list2) {
+                var c = new Card(list1[0], st);
+                list1.RemoveAt(0);
+                p.Cards.Add(c);
+            }
+            Assert.AreEqual(p.IsHasFlush(), Card.SuitType.clover);
+        }
+
+        [TestMethod]
+        public void PlayerHandFourCardTest1() {
+            var p = new Player();
+            var list1 = new List<int> { 1, 1, 1, 1, 9 };
+            var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart, Card.SuitType.spade, Card.SuitType.clover };
+            foreach (Card.SuitType st in list2) {
+                var c = new Card(list1[0], st);
+                list1.RemoveAt(0);
+                p.Cards.Add(c);
+            }
+            Assert.AreEqual(p.IsHasQuartet(), 1);
+        }
+
+        [TestMethod]
+        public void PlayerHandStraightFlushTest1() {
+            var p = new Player();
+            var list1 = new List<int> { 3, 4, 5, 6, 7 };
+            var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.clover, Card.SuitType.clover, Card.SuitType.clover, Card.SuitType.clover };
+            foreach (Card.SuitType st in list2) {
+                var c = new Card(list1[0], st);
+                list1.RemoveAt(0);
+                p.Cards.Add(c);
+            }
+            Assert.AreEqual(p.IsHasStraightFlush(), 3);
+        }
+
+        [TestMethod]
+        public void PlayerHandFiveCardTest1() {
+            var p = new Player();
+            var list1 = new List<int> { 1, 1, 1, 1, 99 };
+            var list2 = new List<Card.SuitType> { Card.SuitType.clover, Card.SuitType.diamond, Card.SuitType.heart, Card.SuitType.spade, Card.SuitType.black };
+            foreach (Card.SuitType st in list2) {
+                var c = new Card(list1[0], st);
+                list1.RemoveAt(0);
+                p.Cards.Add(c);
+            }
+            Assert.AreEqual(p.IsHasQuintet(), 1);
+        }
+
+        [TestMethod]
+        public void PlayerHandRoyalFlushTest1() {
+            var p = new Player();
+            var list1 = new List<int> { 10, 11, 12, 13, 1 };
+            var list2 = new List<Card.SuitType> { Card.SuitType.spade, Card.SuitType.spade, Card.SuitType.spade, Card.SuitType.spade, Card.SuitType.spade };
+            foreach (Card.SuitType st in list2) {
+                var c = new Card(list1[0], st);
+                list1.RemoveAt(0);
+                p.Cards.Add(c);
+            }
+            Assert.AreEqual(p.IsHasRoyalFlush(), 10);
+        }
+
     }
 }
